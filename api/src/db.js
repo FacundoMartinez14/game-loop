@@ -1,3 +1,4 @@
+require('pg')
 require('dotenv').config();
 const { Sequelize, Op } = require('sequelize');
 const fs = require('fs');
@@ -8,7 +9,7 @@ const {
   } = process.env;
 
 
-const DATABASE_URL = `postgresql://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}`;
+  const DATABASE_URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGUSER}`;
 
 // const DATABASE_URL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/games`
 
