@@ -104,9 +104,7 @@ export const getDetails = (id) => {
 export const getTenGames = () => {
 	return async function (dispatch) {
 		try {
-			const games = await axios.get(`/filtered?type=random`, {
-				headers: { 'Access-Control-Allow-Origin': '*' },
-			});
+			const games = await axios.get(`/filtered?type=random`);
 			const res = games.data;
 			return dispatch({
 				type: GET_TEN_GAMES,
