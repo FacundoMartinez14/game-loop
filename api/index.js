@@ -18,3 +18,5 @@ conn.sync({ alter: true }).then(() => {
 // })
 
 });
+
+module.exports = server
