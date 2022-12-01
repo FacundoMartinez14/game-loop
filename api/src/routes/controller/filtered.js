@@ -51,6 +51,8 @@ const getFilter = async (type) => {
 
     if (dbInfo.length > 0) {
       return [...dbInfo, ...resto];
+    }else{
+      return resto
     }
 
     return [];
