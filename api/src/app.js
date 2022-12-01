@@ -24,7 +24,7 @@ server.use((req, res, next) => {
 });
 
 server.use(cors({
-  origin: ["http://localhost:3000/", 'https://game-loop-5vo8.vercel.app'],
+  origin: ["http://localhost:3000/", 'https://game-loop-5vo8.vercel.app/'],
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
