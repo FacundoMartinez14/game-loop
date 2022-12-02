@@ -1,13 +1,10 @@
-require('pg')
+require('pg');
 require('dotenv').config();
 const { Sequelize, Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const { PGUSER, PGPASSWORD, PGHOST, PGPORT, PGDATABASE } = process.env;
-const {
-	DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
-  } = process.env;
-
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 const DATABASE_URL = `postgresql://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}`;
 
@@ -45,16 +42,15 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { Game, Genre,Order, User, Comment, Cartfav, Review } = sequelize.models;
+const { Game, Genre, Order, User, Comment, Cartfav, Review } = sequelize.models;
 
 //Generos y juegos relaciones
-Game.belongsToMany(Genre, { through: "genres_games" });
-Genre.belongsToMany(Game, { through: "genres_games" });
+Game.belongsToMany(Genre, { through: 'genres_games' });
+Genre.belongsToMany(Game, { through: 'genres_games' });
 
 //Relacion uno a muchos orderdes
 User.hasMany(Order);
 Order.belongsTo(User);
-
 
 //Relaciones comentarios
 User.hasMany(Comment);
@@ -62,13 +58,9 @@ Comment.belongsTo(User);
 Game.hasMany(Comment);
 Comment.belongsTo(Game);
 
-
-
-//Realacion para las ordenes 
-Order.belongsToMany(Game, { through: "orders_games" });
-Game.belongsToMany(Order, { through: "orders_games" })
-
-
+//Realacion para las ordenes
+Order.belongsToMany(Game, { through: 'orders_games' });
+Game.belongsToMany(Order, { through: 'orders_games' });
 
 //Relacion Cart Persist
 
@@ -84,10 +76,10 @@ Cartfav.belongsTo(Game);
 
 //Review
 
-User.hasMany(Review)
-Review.belongsTo(User)
-Game.hasMany(Review)
-Review.belongsTo(Game)
+User.hasMany(Review);
+Review.belongsTo(User);
+Game.hasMany(Review);
+Review.belongsTo(Game);
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
