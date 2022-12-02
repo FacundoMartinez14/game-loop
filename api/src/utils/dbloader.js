@@ -14,14 +14,14 @@ const dataBaseLoader = async () => {
     console.log(i)
     let response = await axios.get(`https://api.rawg.io/api/games/${arrId[i]}?key=${APIKEY}`);
     let el = response.data
-    let year =Number(el.released.slice(0, 4))
+    let year =Number(el.released?.slice(0, 4))
     let value = 60
     if (year < 2005) value = Math.round(getRandomArbitrary(1, 10));
     else if (year < 2007) value = Math.round(getRandomArbitrary(10, 20));
     else if (year < 2010) value = Math.round(getRandomArbitrary(15, 30));
     else if (year < 2015) value = Math.round(getRandomArbitrary(20, 40));
     else if (year < 2021) value = Math.round(getRandomArbitrary(40, 70));
-    let arrayPlatform = el.platforms.filter((el) => el.platform.name == "PC");
+    let arrayPlatform = el.platforms?.filter((el) => el.platform.name == "PC");
     const [newGame, created]= await Game.findOrCreate({
       where: {
         id: el.id,
