@@ -17,3 +17,5 @@ conn.sync({ alter: true }).then(async () => {
 		el > 0 ? console.log('Games Already Loaded') : dataBaseLoader();
 	});
 });
+
+module.exports = server
