@@ -206,7 +206,7 @@ function Login() {
                 Don't have an account?
               </button>
             </Link>
-            <div id="signInDiv" style={{ padding: "10px" }}></div>
+            {/* <div id="signInDiv" style={{ padding: "10px" }}></div> */}
           </div>
         </form>
       </div>
