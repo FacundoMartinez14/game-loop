@@ -143,7 +143,7 @@ function Login() {
     window.scrollTo(0, 0);
     let googleInit = async () => {
       const google = await window.google;
-
+      console.log(window.google)
       await google.accounts.id.initialize({
         client_id:
           "532172904271-fv4h8lt47tcec3pchfhp2030t4v1kjbl.apps.googleusercontent.com",

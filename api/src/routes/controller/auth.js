@@ -17,10 +17,11 @@ let singIn = (req, res) => {
 		},
 	})
 		.then((user) => {
+            console.log(user)
+            if (!user) {
+               return res.status(200).json({ msg: 'User not found' });
+            }
 			if (!user.isBanned) {
-				if (!user) {
-					res.status(200).json({ msg: 'User not found' });
-				} else {
 					// Verificar contraseña
 					if (bcrypt.compareSync(password, user.password)) {
 						// Creamos el token
@@ -36,7 +37,7 @@ let singIn = (req, res) => {
 						// Unauthorized Access
 						res.status(200).json({ msg: 'Password incorrect' });
 					}
-				}
+
 			} else {
 				res.status(200).json({ msg: 'This user is banned' });
 			}
